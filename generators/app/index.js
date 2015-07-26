@@ -67,4 +67,18 @@ module.exports = myBase.extend({
   //     done();
   //   }.bind(this));
   // }
+
+  //Installing dependencies
+  installAllDependencies:function () {
+    this.npmInstall(['lodash'],{
+      'saveDev': true
+    });
+    this.bowerInstall(['angularjs','jquery'],{
+      'save': true
+    });
+    //Doesn't seem to be working
+    this.installDependencies(['underscore'],{
+      'save': true
+    });
+  }
 });

@@ -33,4 +33,7 @@ An argument has several options for it.
 ##Options
 Look like arguments, but written like command line flags.
 
+##Dependencies controllers
+Yeoman supplies methods that allow NPM and bower to install dependencies. It will also ensure that all dependencies are only called once.
+
 And story continues...
