@@ -3,6 +3,8 @@ This generator is simply a playground for me to try new things and also keep tra
 
 ##Function context
 There are three ways to make functions a private method or a helper method.
-*Prefix method name by an underscore
-*Use instance methods:
-*Extend a parent generator
+* Prefix method name by an underscore
+* Use instance methods:
+* Extend a parent generator
+
+And story continues...
