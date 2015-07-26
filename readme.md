@@ -29,4 +29,8 @@ An argument has several options for it.
 * `type` String, Number, Array, or Object
 * `defaults` Default value for this argument
 * `banner` String to show on usage notes (this one is provided by default)
+
+##Options
+Look like arguments, but written like command line flags.
+
 And story continues...
