@@ -2,9 +2,9 @@ var generators = require('yeoman-generator');
 var _ = require('lodash');
 
 var myBase = generators.Base.extend({
-  helper:function () {
-    console.log("helper: Not to be run");
-  }
+  // helper:function () {
+  //   console.log("helper: Not to be run");
+  // }
 });
 
 module.exports = myBase.extend({
@@ -25,21 +25,21 @@ module.exports = myBase.extend({
   },
   //Makes this method a private
   _method1:function () {
-    console.log('__method 1 just ran');
+    // console.log('__method 1 just ran');
   },
   method2:function () {
-    console.log('method 2 just ran');
-    this._method1();
+    // console.log('method 2 just ran');
+    // this._method1();
   },
   //Define an instance function
   init: function () {
-    this.helperMethod = function () {
-      console.log("helperMethod: Not to be run");
-    }
+    // this.helperMethod = function () {
+    //   console.log("helperMethod: Not to be run");
+    // }
   },
   exec: function () {
-    this.helperMethod();
-    this.helper();
+    // this.helperMethod();
+    // this.helper();
   },
   //Prompts
   prompting: function () {
@@ -69,16 +69,43 @@ module.exports = myBase.extend({
   // }
 
   //Installing dependencies
-  installAllDependencies:function () {
-    this.npmInstall(['lodash'],{
-      'saveDev': true
-    });
-    this.bowerInstall(['angularjs','jquery'],{
-      'save': true
-    });
-    //Doesn't seem to be working
-    this.installDependencies(['underscore'],{
-      'save': true
-    });
+  _installAllDependencies:function () {
+    // this.npmInstall(['lodash'],{
+    //   'saveDev': true
+    // });
+    // this.bowerInstall(['angularjs','jquery'],{
+    //   'save': true
+    // });
+    //Works by calling npm && bower install. This means we need to populate the respective package files
+    this.installDependencies();
+
+  },
+
+  //Paths
+  paths:function () {
+    // this.log(this.sourceRoot());
+    // this.log(this.templatePath("index.js"));
+  },
+
+  writing: function () {
+    // var beautify = require('gulp-beautify');
+    // this.registerTransformStream(beautify({indentSize:2}));
+    this.fs.copyTpl(
+      this.templatePath('index.html'),
+      this.destinationPath('src/view/index.html'),
+      {
+        title: 'Templating Yeoman',
+        name: this.appname
+      }
+    );
+    this.fs.copy(
+      this.templatePath('gulp/**/*.js'),
+      this.destinationPath()
+    );
+    this.fs.copy(
+      this.templatePath('package.json'),
+      this.destinationPath()
+    );
+    this._installAllDependencies();
   }
 });

@@ -36,4 +36,7 @@ Look like arguments, but written like command line flags.
 ##Dependencies controllers
 Yeoman supplies methods that allow NPM and bower to install dependencies. It will also ensure that all dependencies are only called once.
 
+##File Utilities
+Yeoman uses a ejs like syntax in template files.
+You can also use gulp to modify files as they are converted in Vinyl objects. 
 And story continues...
