@@ -102,10 +102,9 @@ module.exports = myBase.extend({
       this.templatePath('gulp/**/*.js'),
       this.destinationPath()
     );
-    this.fs.copy(
-      this.templatePath('package.json'),
-      this.destinationPath()
-    );
+    this.fs.copyTpl(this.templatePath('_package.json'),'package.json',{
+     name: this.appname
+    });
     this._installAllDependencies();
   }
 });
